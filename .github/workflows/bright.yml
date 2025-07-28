@@ -24,16 +24,15 @@ jobs:
 
       - name: Install application dependencies
         run: |
-          npm install --ignore-scripts
+          npm install --ignore-scripts --verbose
           cd frontend
-          npm install --ignore-scripts --legacy-peer-deps
+          npm install --ignore-scripts --legacy-peer-deps --verbose
 
       - name: Build application
-        run: npm run build:frontend
+        run: docker build -t juice-shop . --verbose
 
       - name: Start application
         run: |
-          docker build -t juice-shop .
           docker run -d -p 3000:3000 juice-shop
 
       - name: Wait for application to be ready
