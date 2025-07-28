@@ -15,9 +15,9 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     env:
-      BRIGHT_HOSTNAME: development.playground.brightsec.com
+      BRIGHT_HOSTNAME: production.brightsec.com
       BRIGHT_PROJECT_ID: kzDSPViNAfFv4AmWL4w3a1
-      BRIGHT_TARGET_URL: http://127.0.0.1:3000
+      BRIGHT_TARGET_URL: https://production-url.com
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -52,7 +52,7 @@ jobs:
       - name: Configure Bright credentials
         uses: ./.github/workflows/composite/configure-bright-credentials
         with:
-          BRIGHT_HOSTNAME: development.playground.brightsec.com
+          BRIGHT_HOSTNAME: production.brightsec.com
           BRIGHT_PROJECT_ID: kzDSPViNAfFv4AmWL4w3a1
           BRIGHT_TOKEN: ${{ secrets.BRIGHT_TOKEN }}
 
