@@ -22,10 +22,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js 18.x
+      - name: Set up Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install application dependencies
         run: npm install
@@ -41,10 +41,10 @@ jobs:
           done
           echo "Application did not start in time" && exit 1
 
-      - name: Set up Node.js 22.x for SecTesterJS
+      - name: Set up Node.js 20.x for SecTesterJS
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Install SecTesterJS dependencies
         run: npm i --save=false --prefix .brightsec @sectester/core @sectester/repeater @sectester/scan @sectester/runner @sectester/reporter
