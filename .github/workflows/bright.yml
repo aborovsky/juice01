@@ -1,3 +1,5 @@
+# .github/workflows/bright.yml
+
 name: Bright
 
 on:
@@ -30,7 +32,7 @@ jobs:
 
       - name: Build and start application
         run: |
-          docker build -t juice-shop .
+          docker build --progress=plain -t juice-shop .
           docker run -d -p 3000:3000 juice-shop
 
       - name: Wait for application to be ready
