@@ -1,6 +1,7 @@
-FROM node:20-buster as installer
+FROM node:20-bullseye as installer
 COPY . /juice-shop
 WORKDIR /juice-shop
+RUN apt-get update -y && apt-get upgrade -y
 RUN npm i -g typescript ts-node
 RUN npm install --omit=dev --unsafe-perm
 RUN npm dedupe --omit=dev
@@ -20,7 +21,7 @@ RUN npm install -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
 RUN npm run sbom
 
 # workaround for libxmljs startup error
-FROM node:20-buster as libxmljs-builder
+FROM node:20-bullseye as libxmljs-builder
 WORKDIR /juice-shop
 RUN apt-get update && apt-get install -y build-essential python3
 COPY --from=installer /juice-shop/node_modules ./node_modules
