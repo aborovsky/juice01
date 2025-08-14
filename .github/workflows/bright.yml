@@ -27,15 +27,17 @@ jobs:
           node-version: 18
 
       - name: Install application dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
+
+      - name: Log installed dependencies
+        run: npm list --depth=0
 
       - name: Start application
         run: npm start &
 
       - name: Wait for application to be ready
         run: |
-          - name: Update package list
-            run: sudo apt-get update
+          sudo apt-get update
           sudo apt-get install -y netcat
           until nc -zv 127.0.0.1 3000; do
             echo "Waiting for application to be ready..."
