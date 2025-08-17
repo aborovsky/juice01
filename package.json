@@ -286,5 +286,8 @@
       "angular",
       "inject"
     ]
+  },
+  "resolutions": {
+    "express": "^4.21.0"
   }
 }
