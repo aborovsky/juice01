@@ -23,11 +23,14 @@ jobs:
         with:
           node-version: 18
 
+      - name: Clean node_modules
+        run: rm -rf node_modules
+
       - name: Install application dependencies
         run: |
-          npm install
+          npm ci
           cd frontend
-          npm install
+          npm ci
 
       - name: Start application
         run: npm start &
