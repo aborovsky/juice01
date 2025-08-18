@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:scss": "npx stylelint \"**/*.scss\"",
-    "lint:fix": "ng lint --fix && npx stylelint \"**/*.scss\" --fix"
+    "lint:fix": "ng lint --fix && npx stylelint \"**/*.scss\" --fix",
+    "generate-lock": "npm install --package-lock-only"
   },
   "private": true,
   "dependencies": {
