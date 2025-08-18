@@ -30,7 +30,7 @@ jobs:
 
       - name: Build and run application
         run: |
-          docker build -t juice-shop .
+          docker build --no-cache --progress=plain -t juice-shop .
           docker run -d -p 3000:3000 juice-shop
 
       - name: Wait for application to be ready
