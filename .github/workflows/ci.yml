@@ -21,6 +21,10 @@ jobs:
         run: |
           if [ ! -f package-lock.json ]; then
             npm install --package-lock-only;
+            git config --global user.email "ci-bot@example.com"
+            git config --global user.name "CI Bot"
+            git add package-lock.json
+            git commit -m "Add missing package-lock.json"
           fi
       - name: "Install application minimalistically"
         run: |
