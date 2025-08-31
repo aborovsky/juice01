@@ -1,24 +1,6 @@
 name: "CI/CD Pipeline"
 on:
   workflow_dispatch:
-# on:
-#   push:
-#     branches-ignore:
-#       - l10n_develop
-#       - gh-pages
-#     paths-ignore:
-#       - '*.md'
-#       - 'LICENSE'
-#       - 'monitoring/grafana-dashboard.json'
-#       - 'screenshots/**'
-#     tags-ignore:
-#       - '*'
-#   pull_request:
-#     paths-ignore:
-#       - '*.md'
-#       - 'LICENSE'
-#       - 'data/static/i18n/*.json'
-#       - 'frontend/src/assets/i18n/*.json'
 
 env:
   NODE_DEFAULT_VERSION: 22
@@ -62,7 +44,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest] # FIXME: Removed "windows-latest" due to 'Error: ENOENT: no such file or directory, open' error breaking at least on Node 20.0 constantly
+        os: [ubuntu-latest, macos-latest]
         node-version: [20, 22]
     steps:
       - name: "Check out Git repository"
@@ -184,7 +166,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        browser: [chrome] # FIXME Switch back to [chrome, firefox] after debugging extreme flakiness of Firefox on CI/CD
+        browser: [chrome]
       fail-fast: false
     steps:
       - name: "Check out Git repository"
